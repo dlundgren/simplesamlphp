@@ -142,6 +142,11 @@ class ControllerResolver extends SymfonyControllerResolver implements ArgumentRe
             }
 
             $argName = $argMeta->getName();
+            if ($argName === 'params') {
+                $args[] = $this->params;
+                continue;
+            }
+
             if (array_key_exists($argName, $this->params)) {
                 // add argument by name
                 $args[] = $this->params[$argName];
